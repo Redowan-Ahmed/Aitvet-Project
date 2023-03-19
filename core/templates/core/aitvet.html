@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %} 
+{% block title %} Home {% endblock title %} 
+
+
+{% block content %}
+    <div class="px-6 py-12 mt-6 bg-gray-100 rounded-xl">
+        <h1 class="text-center text-5xl font-bold">This Project is For AITVET Computer ( C ) </h1>
+        <div class="flex flex-wrap justify-center py-20">
+            {% for member in members%}
+            <div class="bg-gray-200 rounded-xl md:mx-5 my-5 ">
+                <div class="bg-indigo-300 rounded-t-xl">
+                    <img class="object-cover rounded-t-xl h-80 w-96 " src="{{member.image.url}}" title="">
+                </div>
+                <div class="p-5">
+                <h2 class="text-xl py-3 font-bold">Name: {{member.name}}</h2>
+                <h4 class="py-3 font-semibold">Work Done:{{member.work_role}} </h4>
+                <h4 class="py-3 font-semibold">Roll:{{member.roll}} </h4>
+            </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="px-6 py-12 mt-6 bg-gray-100 rounded-xl">
+        <h1 class="text-center text-5xl font-bold"> Files </h1>
+        {% for projectfile in projectfiles%}
+        <div class="m-5">
+        <h2 class="text-xl font-bold p-5 bg-gray-200" > File name:{{projectfile.file_name}} </h2>
+        <embed
+            class="h-screen w-full"
+            src="{{projectfile.file.url}}#toolbar=0"
+            type="application/pdf"
+            frameBorder="0"
+            scrolling="auto"
+        ></embed>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
